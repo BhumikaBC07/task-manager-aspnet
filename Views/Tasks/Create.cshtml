@@ -1,0 +1,33 @@
+@model TaskManagerApp.Models.TaskItem
+
+@{
+    ViewData["Title"] = "Create Task";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <h3 class="fw-bold mb-4" style="color:#1a1a2e;">➕ Create New Task</h3>
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Enter task title" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="3" maxlength="300" placeholder="Enter task description (max 300 chars)"></textarea>
+                    </div>
+                    <div class="mb-4 form-check">
+                        <input asp-for="IsCompleted" class="form-check-input" type="checkbox" />
+                        <label class="form-check-label">Mark as completed</label>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn text-white px-4" style="background-color:#e94560;">Save Task</button>
+                        <a href="/Tasks" class="btn btn-outline-secondary px-4">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
