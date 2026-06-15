@@ -4,10 +4,13 @@ using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var isProduction = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production";
+var dbPath = isProduction ? "/home/taskmanager.db" : "taskmanager.db";
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=/home/taskmanager.db"));
+    options.UseSqlite($"Data Source={dbPath}"));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
